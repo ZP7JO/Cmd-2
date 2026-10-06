@@ -1,101 +1,2725 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080808">
-<title>CodeBase — اشتراک کدهای کاربردی</title>
+
+<title>Iranian Discord</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
-:root{--bg:#080808;--panel:rgba(20,20,20,.76);--orange:#ff7900;--orange2:#ffad42;--white:#f7f7f7;--muted:#aaa;--line:rgba(255,255,255,.11)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:Tahoma,"Segoe UI",sans-serif;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(ellipse at 50% 10%,#341700 0,transparent 45%),radial-gradient(ellipse at 90% 65%,#211006 0,transparent 30%),#080808}
-#particles{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
-.aurora{position:fixed;inset:-30%;z-index:-1;pointer-events:none;background:conic-gradient(from 0deg at 50% 50%,transparent 0 20%,rgba(255,103,0,.08) 28%,transparent 36% 55%,rgba(255,255,255,.035) 62%,transparent 72%);filter:blur(45px);animation:spin 28s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}@keyframes glow{0%,100%{box-shadow:0 0 15px #ff79002b}50%{box-shadow:0 0 34px #ff790075}}@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-a{color:inherit;text-decoration:none}.wrap{width:min(1160px,92%);margin:auto}
-header{position:sticky;top:0;z-index:20;background:rgba(8,8,8,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;font-size:20px;font-weight:900;letter-spacing:-.5px}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--orange),#ffb24c);color:#111;display:grid;place-items:center;font-weight:1000;box-shadow:0 0 25px #ff790044}.brand span{color:var(--orange)}
-nav{display:flex;gap:24px;color:#ccc;font-size:14px}nav a:hover{color:var(--orange)}.nav-actions{display:flex;gap:10px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:#ffffff08;color:white;font-weight:700;cursor:pointer;transition:.25s;font-family:inherit}.btn:hover{transform:translateY(-2px);border-color:#ff7900aa}.btn.primary{background:linear-gradient(120deg,#ff6a00,#ff9d22);border:0;color:#17100a;box-shadow:0 8px 30px #ff790032}.menu{display:none}
-.hero{min-height:600px;display:grid;place-items:center;text-align:center;padding:90px 0 70px;position:relative}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #ff79004d;background:#ff790010;color:#ffad62;border-radius:999px;padding:9px 14px;font-size:12px;animation:rise .7s both}.dot{width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange)}
-h1{font-size:clamp(42px,7vw,82px);line-height:1.18;letter-spacing:-2px;margin:25px 0 16px;font-weight:1000;animation:rise .8s .1s both}.gradient{background:linear-gradient(90deg,#fff 10%,#ffb25a 48%,#ff6900 80%);background-clip:text;color:transparent}.hero p{max-width:680px;margin:0 auto;color:#b9b9b9;line-height:2;font-size:17px;animation:rise .8s .2s both}.hero-buttons{display:flex;justify-content:center;gap:12px;margin-top:30px;flex-wrap:wrap;animation:rise .8s .3s both}.hero-orb{position:absolute;z-index:-1;width:min(460px,80vw);aspect-ratio:1;border:1px solid #ff79002c;border-radius:50%;top:65px;left:50%;transform:translateX(-50%);box-shadow:inset 0 0 70px #ff790008,0 0 80px #ff79000a;animation:float 7s ease-in-out infinite}.hero-orb:before,.hero-orb:after{content:"";position:absolute;inset:11%;border:1px dashed #ff8a2540;border-radius:50%;animation:spin 22s linear infinite}.hero-orb:after{inset:25%;border-style:solid;border-color:#fff1;animation-direction:reverse}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:-8px}.stat,.feature,.code-card,.join{border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(14px);border-radius:18px}.stat{padding:20px;text-align:center}.stat strong{display:block;font-size:24px;color:var(--orange);margin-bottom:5px}.stat span{color:#aaa;font-size:13px}
-section{padding:82px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:26px}.section-head h2{margin:0;font-size:clamp(26px,4vw,38px)}.section-head p{color:var(--muted);margin:9px 0 0;line-height:1.8}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.filter{padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:#ffffff06;color:#ccc;cursor:pointer;font-family:inherit}.filter.active,.filter:hover{background:#ff790018;border-color:#ff790088;color:#ffad62}
-.code-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.code-card{padding:20px;transition:.25s;animation:rise .5s both}.code-card:hover{transform:translateY(-5px);border-color:#ff790078;animation:glow 2s infinite}.card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.tag{font-size:11px;padding:6px 9px;border-radius:8px;background:#ff790018;color:#ffad62;border:1px solid #ff79002b}.lang{color:#888;font-size:12px}.code-card h3{margin:18px 0 8px;font-size:17px}.code-card p{font-size:13px;line-height:1.9;color:#aaa;min-height:48px}.snippet{direction:ltr;text-align:left;background:#070707;border:1px solid #ffffff12;padding:14px;border-radius:12px;color:#ffc184;font:12px/1.8 Consolas,monospace;white-space:pre-wrap;overflow:auto;min-height:78px}.card-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:#888;font-size:12px}.copy{border:0;background:#ff790018;color:#ffad62;border-radius:9px;padding:8px 11px;cursor:pointer;font-family:inherit}.copy:hover{background:#ff790033}.features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.feature{padding:22px}.feature-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:#ff79001a;color:var(--orange);font-size:22px}.feature h3{font-size:16px;margin:17px 0 8px}.feature p{color:#aaa;font-size:13px;line-height:1.9;margin:0}
-.join{padding:38px;display:flex;align-items:center;justify-content:space-between;gap:25px;background:linear-gradient(110deg,#ff790015,#fff 200%);border-color:#ff790032}.join h2{margin:0 0 10px}.join p{color:#aaa;line-height:1.8;margin:0}.join-actions{display:flex;gap:10px;flex-wrap:wrap}
-footer{border-top:1px solid var(--line);padding:28px 0;color:#888;font-size:12px}.footer-row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
-.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#f5f5f5;color:#111;padding:12px 18px;border-radius:12px;font-size:13px;transition:.25s;z-index:99}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:850px){nav{display:none}.menu{display:inline-flex}.code-grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.hero{min-height:540px}}
-@media(max-width:560px){.nav{height:66px}.brand{font-size:17px}.nav-actions .btn:not(.menu){display:none}.hero{padding:72px 0 55px}h1{letter-spacing:-1px}.hero p{font-size:15px}.stats{gap:8px}.stat{padding:14px 5px}.stat strong{font-size:19px}.stat span{font-size:11px}.code-grid,.features{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.join{padding:25px;align-items:start;flex-direction:column}section{padding:60px 0}}
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #050510;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: .35;
+    z-index: -2;
+}
+
+body::before {
+    background: #5865F2;
+    top: -150px;
+    left: -150px;
+}
+
+body::after {
+    background: #0077ff;
+    right: -150px;
+    bottom: -150px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 70px 20px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    position: relative;
+    margin: 30px auto;
+    padding: 40px;
+    max-width: 850px;
+
+    background: rgba(15, 17, 40, .75);
+    backdrop-filter: blur(15px);
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 0 30px rgba(88,101,242,.12);
+
+    overflow: hidden;
+
+    animation: cardIn 1s ease both;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+
+    border-radius: 27px;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            transparent,
+            #5865F2,
+            transparent,
+            #0077ff,
+            transparent
+        );
+
+    animation: rotateBorder 6s linear infinite;
+
+    z-index: -1;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: rgba(10,12,30,.95);
+    border-radius: 23px;
+    z-index: -1;
+}
+
+@keyframes rotateBorder {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   CARD 1
+========================= */
+
+.welcome-card {
+    text-align: center;
+}
+
+.discord-logo {
+    font-size: 90px;
+    color: #5865F2;
+
+    animation:
+        logoSpin 1.5s ease,
+        logoBlink 2.5s ease 1.5s;
+}
+
+@keyframes logoSpin {
+
+    0% {
+        transform: rotate(0deg) scale(.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes logoBlink {
+
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .2;
+    }
+}
+
+.welcome-title {
+    margin-top: 20px;
+    font-size: 42px;
+
+    opacity: 0;
+
+    animation:
+        showWelcome 1s ease 2.8s forwards;
+}
+
+@keyframes showWelcome {
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.card h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #cfd2ff;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+
+/* =========================
+   ABOUT DISCORD
+========================= */
+
+.about-discord {
+    animation:
+        topRightIn 1.2s ease both;
+}
+
+@keyframes topRightIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translate(250px,-200px)
+            rotate(8deg);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translate(0,0)
+            rotate(0);
+    }
+}
+
+.discord-facts {
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+.discord-facts li {
+    margin: 12px 0;
+    color: #dfe1ff;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.menu-card {
+    text-align: center;
+}
+
+.menu-card h2 {
+    margin-bottom: 25px;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+
+    gap: 15px;
+}
+
+.menu button {
+    position: relative;
+
+    padding: 18px;
+
+    border: 1px solid rgba(88,101,242,.4);
+
+    border-radius: 15px;
+
+    background:
+        rgba(88,101,242,.1);
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    overflow: hidden;
+}
+
+.menu button i {
+    margin-right: 8px;
+}
+
+.menu button:hover {
+    transform: translateY(-5px);
+
+    background:
+        rgba(88,101,242,.25);
+
+    box-shadow:
+        0 0 25px rgba(88,101,242,.4);
+}
+
+
+/* =========================
+   CHAT AI OVERLAY
+========================= */
+
+.chat-ai {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.7);
+
+    backdrop-filter:
+        blur(12px);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+}
+
+
+/* =========================
+   CHAT BOX
+========================= */
+
+.chat-box {
+
+    width: min(650px,94%);
+
+    height: 720px;
+
+    max-height: 92vh;
+
+    background:
+        rgba(10,12,30,.97);
+
+    border:
+        1px solid rgba(88,101,242,.6);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 50px
+        rgba(88,101,242,.35);
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+    animation:
+        chatOpen .35s ease;
+}
+
+@keyframes chatOpen {
+
+    from {
+        opacity: 0;
+        transform: scale(.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   CHAT HEADER
+========================= */
+
+.chat-header {
+
+    padding: 18px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+}
+
+.ai-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.ai-icon {
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: #5865F2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 0 20px
+        rgba(88,101,242,.7);
+}
+
+.ai-title h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.ai-online {
+
+    color: #43ff88;
+
+    font-size: 12px;
+
+    margin-top: 3px;
+}
+
+.close-chat {
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.close-chat:hover {
+    color: #5865F2;
+    transform: rotate(90deg);
+}
+
+
+/* =========================
+   MESSAGES
+========================= */
+
+.chat-messages {
+
+    flex: 1;
+
+    padding: 20px;
+
+    overflow-y: auto;
+}
+
+.message {
+
+    margin-bottom: 12px;
+
+    padding: 12px 15px;
+
+    border-radius: 15px;
+
+    max-width: 85%;
+
+    line-height: 1.7;
+
+    white-space: pre-line;
+
+    word-wrap: break-word;
+}
+
+.bot-message {
+
+    background:
+        rgba(88,101,242,.18);
+
+    border:
+        1px solid rgba(88,101,242,.25);
+
+    color: white;
+}
+
+.user-message {
+
+    background:
+        rgba(255,255,255,.08);
+
+    color: white;
+
+    margin-left: auto;
+}
+
+
+/* =========================
+   QUESTION LIST
+========================= */
+
+.question-title {
+
+    padding:
+        10px 20px 5px;
+
+    color: #9da5ff;
+
+    font-size: 13px;
+}
+
+.question-list {
+
+    padding:
+        5px 20px 12px;
+
+    max-height: 150px;
+
+    overflow-y: auto;
+
+    border-top:
+        1px solid rgba(255,255,255,.06);
+}
+
+.question-btn {
+
+    width: 100%;
+
+    text-align: left;
+
+    margin-bottom: 7px;
+
+    padding: 10px 12px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        rgba(88,101,242,.25);
+
+    background:
+        rgba(88,101,242,.08);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.question-btn:hover {
+
+    background:
+        rgba(88,101,242,.25);
+
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.chat-input-area {
+
+    padding: 15px;
+
+    display: flex;
+
+    gap: 10px;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+}
+
+.chat-input {
+
+    flex: 1;
+
+    background:
+        rgba(255,255,255,.07);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    color: white;
+
+    outline: none;
+
+    border-radius: 12px;
+
+    padding: 13px;
+
+    font-size: 14px;
+}
+
+.chat-input::placeholder {
+    color: #888da8;
+}
+
+.chat-send {
+
+    width: 50px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #5865F2;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: .2s;
+}
+
+.chat-send:hover {
+
+    background: #4752c4;
+
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .container {
+        padding: 35px 12px;
+    }
+
+    .card {
+        padding: 25px 18px;
+    }
+
+    .discord-logo {
+        font-size: 70px;
+    }
+
+    .welcome-title {
+        font-size: 32px;
+    }
+
+    .card h2 {
+        font-size: 25px;
+    }
+
+    .chat-box {
+        height: 90vh;
+    }
+
+}
+
+
+/* SHOP CARD */
+.shop-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);backdrop-filter:blur(10px);z-index:10000}
+.shop-card{width:min(520px,92%);padding:32px;background:rgba(10,12,30,.98);border:1px solid rgba(88,101,242,.65);border-radius:25px;box-shadow:0 0 50px rgba(88,101,242,.4);text-align:center;animation:shopOpen .3s ease}
+@keyframes shopOpen{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+.shop-card h2{color:#5865F2;margin-bottom:24px;text-shadow:0 0 12px #5865F2}
+.shop-product{padding:18px;margin:12px 0;border-radius:15px;background:rgba(88,101,242,.1);border:1px solid rgba(88,101,242,.35)}
+.shop-product h3{margin:0 0 8px;font-size:20px}.shop-price{margin:0;color:#43ff88;font-size:18px;font-weight:bold}
+.shop-close{margin-top:18px;padding:11px 28px;border:0;border-radius:12px;background:#5865F2;color:#fff;cursor:pointer;font-size:15px}
+
+/* GUIDE CARD */
+.guide-overlay{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(10px);
+  z-index:10001;
+  padding:18px;
+}
+.guide-card{
+  width:min(900px,96%);
+  max-height:90vh;
+  overflow-y:auto;
+  direction:rtl;
+  padding:30px;
+  background:rgba(10,12,30,.98);
+  border:1px solid rgba(88,101,242,.65);
+  border-radius:25px;
+  box-shadow:0 0 55px rgba(88,101,242,.38);
+  text-align:right;
+  animation:guideOpen .3s ease;
+}
+@keyframes guideOpen{
+  from{opacity:0;transform:translateY(20px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.guide-card::-webkit-scrollbar{width:8px}
+.guide-card::-webkit-scrollbar-thumb{
+  background:#5865F2;
+  border-radius:20px;
+}
+.guide-head{
+  text-align:center;
+  margin-bottom:24px;
+}
+.guide-head h2{
+  color:#5865F2;
+  margin:0 0 8px;
+  text-shadow:0 0 12px #5865F2;
+}
+.guide-head p{
+  color:#cfd2ff;
+  margin:0;
+}
+.guide-section{
+  margin:18px 0;
+  padding:20px;
+  border-radius:18px;
+  background:rgba(88,101,242,.08);
+  border:1px solid rgba(88,101,242,.25);
+}
+.guide-section h3{
+  margin:0 0 10px;
+  color:#fff;
+}
+.guide-section p,.guide-section li{
+  color:#d9dcff;
+  line-height:1.9;
+}
+.guide-section ol,.guide-section ul{
+  padding-right:22px;
+}
+.guide-note{
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:12px;
+  background:rgba(67,255,136,.08);
+  border:1px solid rgba(67,255,136,.25);
+  color:#bfffd4;
+}
+.guide-shot-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:18px;
+}
+.guide-shot{
+  position:relative;
+  min-height:300px;
+  overflow:hidden;
+  border-radius:18px;
+  background:#11131f;
+  border:1px solid rgba(255,255,255,.12);
+  direction:ltr;
+}
+.mock-top{
+  height:42px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:0 14px;
+  background:#181a24;
+}
+.mock-dot{
+  width:9px;height:9px;border-radius:50%;
+  background:#777;
+}
+.mock-body{
+  position:relative;
+  padding:28px 20px;
+  min-height:258px;
+  background:linear-gradient(145deg,#313338,#1e1f22);
+}
+.mock-login{
+  width:min(260px,80%);
+  margin:0 auto;
+  padding:20px;
+  border-radius:12px;
+  background:#fff;
+  color:#222;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+.mock-login h4{
+  margin:0 0 14px;
+  color:#5865f2;
+  font-size:20px;
+}
+.mock-input{
+  height:34px;
+  margin:8px 0;
+  border-radius:6px;
+  background:#eee;
+  text-align:left;
+  padding:8px 10px;
+  font-size:11px;
+  color:#777;
+  box-sizing:border-box;
+}
+.mock-button{
+  margin-top:10px;
+  height:34px;
+  border-radius:6px;
+  background:#5865f2;
+  color:#fff;
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.mock-arrow{
+  position:absolute;
+  right:18px;
+  top:72px;
+  color:#ffdf5d;
+  font-size:30px;
+  transform:rotate(-18deg);
+  text-shadow:0 0 10px rgba(255,223,93,.55);
+}
+.mock-label{
+  position:absolute;
+  right:14px;
+  top:105px;
+  max-width:125px;
+  color:#ffdf5d;
+  font-size:12px;
+  line-height:1.5;
+  text-align:right;
+  direction:rtl;
+}
+.mock-arrow.left{
+  left:18px;
+  right:auto;
+  top:175px;
+  transform:rotate(165deg);
+}
+.mock-label.left{
+  left:14px;
+  right:auto;
+  top:210px;
+  text-align:left;
+  direction:rtl;
+}
+.guide-close{
+  display:block;
+  margin:24px auto 0;
+  padding:11px 30px;
+  border:0;
+  border-radius:12px;
+  background:#5865F2;
+  color:#fff;
+  cursor:pointer;
+  font-size:15px;
+}
+.guide-close:hover{filter:brightness(1.12)}
+@media(max-width:700px){
+  .guide-card{padding:20px}
+  .guide-shot-wrap{grid-template-columns:1fr}
+  .guide-shot{min-height:280px}
+}
+
+
+/* ABOUT US CARD */
+.about-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.78);backdrop-filter:blur(10px);z-index:10002;padding:18px}
+.about-card{width:min(760px,94%);padding:34px;background:rgba(10,12,30,.98);border:1px solid rgba(88,101,242,.65);border-radius:25px;box-shadow:0 0 55px rgba(88,101,242,.4);animation:aboutOpen .3s ease;text-align:center}
+@keyframes aboutOpen{from{opacity:0;transform:scale(.88) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.about-card h2{color:#5865F2;margin:0 0 24px;text-shadow:0 0 12px #5865F2}
+.about-text{padding:22px;margin:14px 0;border-radius:18px;background:rgba(88,101,242,.08);border:1px solid rgba(88,101,242,.25);line-height:2;font-size:17px}
+.about-text.fa{direction:rtl;text-align:right}
+.about-text.en{direction:ltr;text-align:left}
+.about-close{margin-top:12px;padding:11px 30px;border:0;border-radius:12px;background:#5865F2;color:#fff;cursor:pointer;font-size:15px}
+.about-close:hover{filter:brightness(1.12)}
+
+/* SUPPORT TICKET */
+.support-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.82);backdrop-filter:blur(12px);z-index:10003;padding:18px}
+.support-card{width:min(760px,95%);max-height:90vh;overflow:auto;padding:30px;background:linear-gradient(145deg,rgba(16,18,38,.99),rgba(8,10,24,.99));border:1px solid rgba(88,101,242,.7);border-radius:26px;box-shadow:0 0 65px rgba(88,101,242,.35);animation:supportOpen .3s ease}
+@keyframes supportOpen{from{opacity:0;transform:translateY(25px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+.support-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:24px}
+.support-head h2{margin:0;color:#fff;font-size:25px}
+.support-head h2 i{color:#5865F2;margin-right:8px}
+.support-sub{margin:-14px 0 24px;color:#aeb4d0;line-height:1.8}
+.ticket-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ticket-field{display:flex;flex-direction:column;gap:8px}
+.ticket-field.full{grid-column:1/-1}
+.ticket-field label{color:#dfe3ff;font-size:14px;font-weight:700}
+.ticket-field input,.ticket-field select,.ticket-field textarea{width:100%;box-sizing:border-box;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);color:#fff;border-radius:13px;padding:13px 14px;outline:none;font:inherit;transition:.2s}
+.ticket-field input:focus,.ticket-field select:focus,.ticket-field textarea:focus{border-color:#5865F2;box-shadow:0 0 0 3px rgba(88,101,242,.13)}
+.ticket-field select option{background:#11142b;color:#fff}
+.ticket-field textarea{min-height:145px;resize:vertical}
+.ticket-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+.ticket-btn{border:0;border-radius:12px;padding:12px 22px;cursor:pointer;font-weight:700;font-size:14px}
+.ticket-send{background:#5865F2;color:#fff;box-shadow:0 8px 25px rgba(88,101,242,.25)}
+.ticket-send:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.ticket-close{background:rgba(255,255,255,.08);color:#fff}
+.ticket-close:hover{background:rgba(255,255,255,.13)}
+.ticket-note{margin-top:18px;padding:12px 14px;border-radius:12px;background:rgba(88,101,242,.08);border:1px solid rgba(88,101,242,.2);color:#aeb4d0;font-size:13px;line-height:1.7}
+@media(max-width:620px){.ticket-grid{grid-template-columns:1fr}.ticket-field.full{grid-column:auto}.support-card{padding:22px}.support-actions{flex-direction:column}}
+
 </style>
 </head>
+
+
 <body>
-<canvas id="particles"></canvas><div class="aurora"></div>
-<header><div class="wrap nav">
-  <a class="brand" href="#"><div class="logo">&lt;/&gt;</div>Code<span>Base</span></a>
-  <nav><a href="#home">خانه</a><a href="#codes">کتابخانه کد</a><a href="#features">امکانات</a><a href="#community">مشارکت</a></nav>
-  <div class="nav-actions"><a class="btn" href="#codes">دیدن کدها ↙</a><button class="btn menu" onclick="document.querySelector('#codes').scrollIntoView({behavior:'smooth'})">کدها ☰</button></div>
-</div></header>
-<main>
-<section class="hero wrap" id="home">
-  <div class="hero-orb"></div>
-  <div>
-    <div class="eyebrow"><span class="dot"></span> فضای اشتراک کدهای کاربردی</div>
-    <h1>کدهای بهتر؛<br><span class="gradient">ایده‌های بزرگ‌تر.</span></h1>
-    <p>جایی برای پیدا کردن، یاد گرفتن و به اشتراک گذاشتن کدهای مفید. از اسنیپت‌های کوتاه تا ابزارهای کاربردی — همه‌چیز مرتب، قابل استفاده و آماده‌ی توسعه.</p>
-    <div class="hero-buttons"><a class="btn primary" href="#codes">مشاهده کتابخانه کد <span>↙</span></a><a class="btn" href="#community">چطور مشارکت کنم؟</a></div>
-  </div>
-</section>
-<div class="wrap stats">
-  <div class="stat"><strong>Code Hub</strong><span>کتابخانه‌ای برای کدهای مفید</span></div>
-  <div class="stat"><strong>Open Ideas</strong><span>یادگیری و همکاری جمعی</span></div>
-  <div class="stat"><strong>Clean &amp; Simple</strong><span>کدهای مرتب و قابل فهم</span></div>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         CARD 1
+    ========================== -->
+
+    <div class="card welcome-card">
+
+        <i class="fab fa-discord discord-logo"></i>
+
+        <h1 class="welcome-title">
+            Welcome
+        </h1>
+
+    </div>
+
+
+
+    <!-- =========================
+         CARD 2
+    ========================== -->
+
+    <div class="card">
+
+        <h2>
+            Welcome to Iranian Discord
+        </h2>
+
+        <p>
+            Welcome to our community 🇮🇷
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         CARD 3
+    ========================== -->
+
+    <div class="card">
+
+        <h2>
+            Iranian Discord
+        </h2>
+
+        <p>
+            Iranian Discord is a website dedicated
+            to helping people who use the Discord platform.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         CARD 4
+    ========================== -->
+
+    <div class="card about-discord">
+
+        <h2>
+            About Discord
+        </h2>
+
+        <ul class="discord-facts">
+
+            <li>
+                Discord is a communication platform
+                for communities and friends.
+            </li>
+
+            <li>
+                Users can communicate through
+                text, voice and video.
+            </li>
+
+            <li>
+                Discord servers can contain
+                multiple channels.
+            </li>
+
+            <li>
+                Roles and permissions help
+                administrators manage servers.
+            </li>
+
+            <li>
+                Discord also supports bots,
+                applications and integrations.
+            </li>
+
+        </ul>
+
+    </div>
+
+
+
+    <!-- =========================
+         MAIN MENU
+    ========================== -->
+
+    <div class="card menu-card">
+
+        <h2>
+            Menu
+        </h2>
+
+        <div class="menu">
+
+            <button onclick="openChat()">
+
+                <i class="fas fa-robot"></i>
+
+                Chat AI
+
+            </button>
+
+
+            <button onclick="openShop()">
+
+                <i class="fas fa-store"></i>
+
+                Shop
+
+            </button>
+
+
+            <button onclick="openCommunity()">
+
+                <i class="fab fa-discord"></i>
+
+                Discord Community
+
+            </button>
+
+
+            <button onclick="showGuide()">
+
+                <i class="fas fa-book"></i>
+
+                Guide
+
+            </button>
+
+
+            <button onclick="showAbout()">
+
+                <i class="fas fa-circle-info"></i>
+
+                About Us
+
+            </button>
+
+
+            <button onclick="showSupport()">
+
+                <i class="fas fa-headset"></i>
+
+                Support
+
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
-<section class="wrap" id="codes">
-  <div class="section-head"><div><h2>نمونه‌های کاربردی</h2><p>برای شروع، چند اسنیپت نمونه گذاشته‌ایم؛ دکمه کپی، کد را در کلیپ‌بورد قرار می‌دهد.</p></div><span class="tag">DEMO LIBRARY</span></div>
-  <div class="filters"><button class="filter active" data-filter="all">همه</button><button class="filter" data-filter="web">وب</button><button class="filter" data-filter="js">JavaScript</button><button class="filter" data-filter="css">CSS</button></div>
-  <div class="code-grid" id="codeGrid">
-    <article class="code-card" data-category="js"><div class="card-top"><span class="tag">JavaScript</span><span class="lang">01 / JS</span></div><h3>کپی متن با یک کلیک</h3><p>برای دکمه‌های کپی متن، لینک یا کد در پروژه‌های وب.</p><pre class="snippet">async function copyText(text) {
-  await navigator.clipboard.writeText(text);
-}</pre><div class="card-bottom"><span>مناسب ابزارهای وب</span><button class="copy" data-copy="async function copyText(text) {&#10;  await navigator.clipboard.writeText(text);&#10;}">کپی کد ⧉</button></div></article>
-    <article class="code-card" data-category="css"><div class="card-top"><span class="tag">CSS</span><span class="lang">02 / CSS</span></div><h3>درخشش نارنجی</h3><p>یک افکت نور ملایم برای دکمه‌ها و کارت‌ها.</p><pre class="snippet">.glow {
-  box-shadow: 0 0 24px #ff790055;
-  transition: .25s ease;
-}</pre><div class="card-bottom"><span>ظاهر نئونی</span><button class="copy" data-copy=".glow {&#10;  box-shadow: 0 0 24px #ff790055;&#10;  transition: .25s ease;&#10;}">کپی کد ⧉</button></div></article>
-    <article class="code-card" data-category="web"><div class="card-top"><span class="tag">HTML / Web</span><span class="lang">03 / WEB</span></div><h3>لینک اسکرول نرم</h3><p>با کلیک روی لینک‌ها به بخش موردنظر آرام حرکت کن.</p><pre class="snippet">html {
-  scroll-behavior: smooth;
-}</pre><div class="card-bottom"><span>بدون JavaScript</span><button class="copy" data-copy="html {&#10;  scroll-behavior: smooth;&#10;}">کپی کد ⧉</button></div></article>
+
+
+
+
+<!-- DISCORD GUIDE -->
+<div class="guide-overlay" id="guideOverlay">
+  <div class="guide-card">
+
+    <div class="guide-head">
+      <h2><i class="fas fa-book-open"></i> راهنمای کامل Discord</h2>
+      <p>از ساخت حساب تا فعال‌سازی امنیت، ساخت سرور و استفاده از بات‌ها</p>
+    </div>
+
+    <div class="guide-section">
+      <h3>1️⃣ ساخت حساب Discord</h3>
+      <p>اگر هنوز حساب نداری، ابتدا برنامه Discord را باز کن یا وارد نسخه وب شو و گزینه ثبت‌نام را انتخاب کن.</p>
+      <ol>
+        <li>روی <b>Register / Sign Up</b> بزن.</li>
+        <li>ایمیل، نام کاربری و رمز عبور را وارد کن.</li>
+        <li>تاریخ تولد را طبق اطلاعات واقعی خودت وارد کن.</li>
+        <li>ثبت‌نام را کامل کن و اگر Discord ایمیل تأیید خواست، ایمیلت را تأیید کن.</li>
+      </ol>
+
+      <div class="guide-shot-wrap">
+        <div class="guide-shot">
+          <div class="mock-top">
+            <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+          </div>
+          <div class="mock-body">
+            <div class="mock-login">
+              <h4>Discord</h4>
+              <div class="mock-input">Email</div>
+              <div class="mock-input">Password</div>
+              <div class="mock-button">Log In</div>
+            </div>
+            <div class="mock-arrow">↙</div>
+            <div class="mock-label">ایمیل و رمزت را اینجا وارد کن</div>
+          </div>
+        </div>
+
+        <div class="guide-shot">
+          <div class="mock-top">
+            <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+          </div>
+          <div class="mock-body">
+            <div class="mock-login">
+              <h4>Create an account</h4>
+              <div class="mock-input">Email</div>
+              <div class="mock-input">Username</div>
+              <div class="mock-input">Password</div>
+              <div class="mock-button">Continue</div>
+            </div>
+            <div class="mock-arrow left">↘</div>
+            <div class="mock-label left">برای ساخت حساب، Register را انتخاب کن</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <h3>2️⃣ فعال‌سازی و تأیید حساب</h3>
+      <p>بعد از ساخت حساب، ممکن است Discord از تو بخواهد ایمیل یا شماره تلفن را تأیید کنی. این کار برای فعال شدن بعضی قابلیت‌ها و افزایش امنیت حساب انجام می‌شود.</p>
+      <ol>
+        <li>اگر پیام تأیید ایمیل دیدی، وارد ایمیل خودت شو.</li>
+        <li>ایمیل رسمی Discord را باز کن و گزینه تأیید را بزن.</li>
+        <li>اگر شماره تلفن خواسته شد، فقط شماره‌ای را وارد کن که خودت به آن دسترسی داری.</li>
+        <li>اگر کپچا نمایش داده شد، مراحل آن را طبق دستور خودش انجام بده.</li>
+      </ol>
+      <div class="guide-note">⚠️ کد تأیید، رمز عبور و کدهای امنیتی حساب را برای هیچ‌کس ارسال نکن.</div>
+    </div>
+
+    <div class="guide-section">
+      <h3>3️⃣ فعال کردن ورود دو مرحله‌ای (2FA)</h3>
+      <p>برای امنیت بیشتر می‌توانی ورود دو مرحله‌ای را از تنظیمات حساب فعال کنی.</p>
+      <ol>
+        <li>وارد <b>User Settings</b> شو.</li>
+        <li>به بخش <b>My Account</b> برو.</li>
+        <li>گزینه مربوط به <b>Two-Factor Authentication</b> را پیدا کن.</li>
+        <li>مراحل نمایش‌داده‌شده توسط Discord و برنامه Authenticator را انجام بده.</li>
+        <li>کدهای پشتیبان را در یک جای امن نگه دار و با کسی به اشتراک نگذار.</li>
+      </ol>
+    </div>
+
+    <div class="guide-section">
+      <h3>4️⃣ ورود به یک سرور</h3>
+      <ol>
+        <li>از ستون سمت چپ روی علامت <b>+</b> بزن.</li>
+        <li>اگر لینک دعوت داری، گزینه <b>Join a Server</b> را انتخاب کن.</li>
+        <li>لینک دعوت را وارد کن.</li>
+        <li>روی Join بزن و قوانین سرور را بخوان.</li>
+      </ol>
+    </div>
+
+    <div class="guide-section">
+      <h3>5️⃣ ساخت سرور Discord</h3>
+      <ol>
+        <li>روی <b>+</b> در سمت چپ Discord بزن.</li>
+        <li><b>Create My Own</b> را انتخاب کن.</li>
+        <li>نوع سرور را انتخاب کن یا گزینه مناسب را رد کن.</li>
+        <li>نام و عکس سرور را تنظیم کن.</li>
+        <li>روی <b>Create</b> بزن.</li>
+      </ol>
+      <p>بعد از ساخت، می‌توانی کانال‌های متنی و صوتی، نقش‌ها (Roles) و دسترسی‌ها را تنظیم کنی.</p>
+    </div>
+
+    <div class="guide-section">
+      <h3>6️⃣ کانال و Role چیست؟</h3>
+      <ul>
+        <li><b>Text Channel:</b> برای پیام، فایل و گفتگو.</li>
+        <li><b>Voice Channel:</b> برای صحبت صوتی و فعالیت‌های صوتی.</li>
+        <li><b>Role:</b> برای تعیین نام، رنگ و سطح دسترسی اعضا.</li>
+        <li>در تنظیمات Permission با دقت دسترسی‌ها را بده؛ مخصوصاً دسترسی‌های مدیریتی.</li>
+      </ul>
+    </div>
+
+    <div class="guide-section">
+      <h3>7️⃣ اضافه کردن و فعال کردن بات</h3>
+      <ol>
+        <li>یک بات معتبر و شناخته‌شده را انتخاب کن.</li>
+        <li>صفحه دعوت (Invite) بات را باز کن.</li>
+        <li>سروری را که خودت مدیریت می‌کنی انتخاب کن.</li>
+        <li>مجوزهایی را که بات واقعاً لازم دارد بررسی کن.</li>
+        <li>بات را وارد سرور کن و طبق راهنمای همان بات تنظیمش کن.</li>
+      </ol>
+      <div class="guide-note">🔐 هیچ باتی نباید رمز عبور Discord یا کدهای ورود تو را بخواهد. قبل از Authorize کردن، نام بات و Permissionها را بررسی کن.</div>
+    </div>
+
+    <div class="guide-section">
+      <h3>8️⃣ نکات مهم برای استفاده امن</h3>
+      <ul>
+        <li>رمز عبورت را با هیچ‌کس به اشتراک نگذار.</li>
+        <li>روی لینک‌های مشکوک کلیک نکن.</li>
+        <li>قبل از دادن Administrator یا Permissionهای حساس به یک بات، آن‌ها را بررسی کن.</li>
+        <li>اگر حساب یا ایمیل تأیید مشکل داشت، از پشتیبانی رسمی Discord کمک بگیر.</li>
+      </ul>
+    </div>
+
+    <button class="guide-close" onclick="closeGuide()">بستن راهنما</button>
   </div>
-</section>
-<section class="wrap" id="features">
-  <div class="section-head"><div><h2>چرا این فضا؟</h2><p>برای اینکه کد خوب فقط نوشته نشود؛ پیدا شود، فهمیده شود و بهتر شود.</p></div></div>
-  <div class="features">
-    <div class="feature"><div class="feature-icon">⌘</div><h3>کدهای مرتب</h3><p>نمونه‌ها را با عنوان، زبان و توضیح کوتاه دسته‌بندی کن.</p></div>
-    <div class="feature"><div class="feature-icon">✦</div><h3>ظاهر مدرن</h3><p>پس‌زمینه متحرک، نورهای نارنجی و رابط تیره و خوانا.</p></div>
-    <div class="feature"><div class="feature-icon">⧉</div><h3>کپی سریع</h3><p>کدهای نمونه را با یک کلیک کپی و در پروژه خودت امتحان کن.</p></div>
-    <div class="feature"><div class="feature-icon">↗</div><h3>رشد جمعی</h3><p>ساختار آماده برای اضافه‌کردن کدها و مشارکت کاربران.</p></div>
+</div>
+
+<!-- ABOUT US -->
+<div class="about-overlay" id="aboutOverlay">
+  <div class="about-card">
+    <h2><i class="fas fa-circle-info"></i> About Us</h2>
+    <div class="about-text fa">
+      <b>درباره ما</b><br><br>
+      سایت <b>Iranian Discord</b> توسط یک توسعه‌دهنده دیسکورد و سایت به نام <b>hoseinzp7</b> می‌باشد.<br>
+      این سایت تلاش دارد برای ایرانیان تمام جهان و مردمان غیرایرانی، تجربه‌ای زیبا از پلتفرم Discord داشته باشند.
+    </div>
+    <div class="about-text en">
+      <b>About Us</b><br><br>
+      The <b>Iranian Discord</b> website is developed by a Discord and web developer named <b>hoseinzp7</b>.<br>
+      This website aims to provide Iranians around the world, as well as non-Iranian users, with a beautiful experience of the Discord platform.
+    </div>
+    <button class="about-close" onclick="closeAbout()">بستن</button>
   </div>
-</section>
-<section class="wrap" id="community"><div class="join"><div><h2>یه کد مفید داری؟</h2><p>این نسخه فعلاً نمایشی و فرانت‌اند است. برای ارسال واقعی کدها، حساب کاربری و ذخیره‌سازی مشترک، باید بک‌اند یا سرویس دیتابیس اضافه شود.</p></div><div class="join-actions"><a class="btn primary" href="#codes">شروع از نمونه‌ها</a><button class="btn" onclick="alert('برای فعال‌کردن ارسال کد، باید بک‌اند یا دیتابیس به سایت متصل شود.')">ارسال کد +</button></div></div></section>
-</main>
-<footer><div class="wrap footer-row"><span>© 2026 CodeBase — فضای اشتراک کدهای کاربردی</span><span>Developer Hoseinzp7</span></div></footer>
-<div class="toast" id="toast">کد کپی شد ✓</div>
+</div>
+
+
+<!-- SUPPORT TICKET -->
+<div class="support-overlay" id="supportOverlay">
+  <div class="support-card">
+    <div class="support-head">
+      <h2><i class="fas fa-headset"></i> پشتیبانی / Support</h2>
+    </div>
+
+    <p class="support-sub">
+      مشکل یا سوالی داری؟ یک تیکت برای تیم پشتیبانی ارسال کن تا درخواستت بررسی شود.
+      <br>
+      Have a question or issue? Send a support ticket and our team can review your request.
+    </p>
+
+    <div class="ticket-grid">
+      <div class="ticket-field">
+        <label for="ticketName">نام / Name</label>
+        <input id="ticketName" type="text" placeholder="نام شما">
+      </div>
+
+      <div class="ticket-field">
+        <label for="ticketContact">راه ارتباطی / Contact</label>
+        <input id="ticketContact" type="text" placeholder="Discord ID یا ایمیل">
+      </div>
+
+      <div class="ticket-field full">
+        <label for="ticketSubject">موضوع / Subject</label>
+        <select id="ticketSubject">
+          <option value="">موضوع درخواست را انتخاب کنید</option>
+          <option>مشکل در سایت / Website Issue</option>
+          <option>مشکل در سرویس / Service Issue</option>
+          <option>گزارش باگ / Bug Report</option>
+          <option>پیشنهاد / Suggestion</option>
+          <option>سایر / Other</option>
+        </select>
+      </div>
+
+      <div class="ticket-field full">
+        <label for="ticketMessage">توضیحات / Message</label>
+        <textarea id="ticketMessage" placeholder="مشکل یا درخواست خود را کامل توضیح دهید..."></textarea>
+      </div>
+    </div>
+
+    <div class="ticket-actions">
+      <button class="ticket-btn ticket-close" onclick="closeSupport()">بستن</button>
+      <button class="ticket-btn ticket-send" onclick="submitTicket()">
+        <i class="fas fa-paper-plane"></i> ارسال تیکت
+      </button>
+    </div>
+
+    <div class="ticket-note">
+      💡 برای پاسخ سریع‌تر، Discord ID یا راه ارتباطی درست خود را وارد کنید.
+    </div>
+  </div>
+</div>
+
+<!-- SHOP -->
+<div class="shop-overlay" id="shopOverlay">
+  <div class="shop-card">
+    <h2><i class="fas fa-store"></i> فروشگاه</h2>
+    <div class="shop-product"><h3>ساخت سرور دیسکورد</h3><p class="shop-price">قیمت: 180T</p></div>
+    <div class="shop-product"><h3>ساخت بات دیسکورد</h3><p class="shop-price">قیمت: 180T</p></div>
+    <button class="shop-close" onclick="closeShop()">بستن</button>
+  </div>
+</div>
+
+<!-- =====================================================
+     CHAT AI
+===================================================== -->
+
+<div class="chat-ai" id="chatAI">
+
+
+    <div class="chat-box">
+
+
+        <!-- HEADER -->
+
+        <div class="chat-header">
+
+            <div class="ai-title">
+
+                <div class="ai-icon">
+
+                    <i class="fas fa-robot"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Iranian Discord AI
+                    </h3>
+
+                    <div class="ai-online">
+                        ● Online
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="close-chat"
+                onclick="closeChat()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MESSAGES -->
+
+        <div
+            class="chat-messages"
+            id="chatMessages">
+
+            <div class="message bot-message">
+
+                🤖 سلام!
+
+                من Iranian Discord AI هستم.
+
+                فقط درباره Discord راهنمایی می‌کنم.
+
+                از لیست پایین می‌تونی یکی از
+                ۱۰۰ سؤال آماده رو انتخاب کنی.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTIONS -->
+
+        <div class="question-title">
+
+            💡 ۱۰۰ سؤال آماده Discord
+
+        </div>
+
+
+        <div
+            class="question-list"
+            id="questionList">
+
+        </div>
+
+
+
+        <!-- INPUT -->
+
+        <div class="chat-input-area">
+
+            <input
+                class="chat-input"
+                id="chatInput"
+                type="text"
+                placeholder="Ask about Discord..."
+            >
+
+
+            <button
+                class="chat-send"
+                onclick="sendChat()">
+
+                <i class="fas fa-paper-plane"></i>
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
 <script>
-document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',async()=>{
- const text=btn.dataset.copy.replace(/&#10;/g,'\n');
- try{await navigator.clipboard.writeText(text);showToast('کد کپی شد ✓')}
- catch(e){const area=document.createElement('textarea');area.value=text;document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();showToast('کد کپی شد ✓')}
-}));
-document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{
- document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
- document.querySelectorAll('.code-card').forEach(card=>card.style.display=btn.dataset.filter==='all'||card.dataset.category===btn.dataset.filter?'':'none');
-}));
-let toastTimer;function showToast(text){const t=document.getElementById('toast');t.textContent=text;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800)}
-// Lightweight animated orange/white particles, no external libraries.
-const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');let w,h,pts=[];
-function resize(){w=canvas.width=innerWidth*devicePixelRatio;h=canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';pts=Array.from({length:Math.min(100,Math.floor(innerWidth/14))},()=>({x:Math.random()*w,y:Math.random()*h,r:(Math.random()*1.7+.4)*devicePixelRatio,v:(Math.random()*.35+.08)*devicePixelRatio,a:Math.random()*.6+.15,c:Math.random()>.23?'255,121,0':'255,255,255'}))}
-function draw(){ctx.clearRect(0,0,w,h);for(const p of pts){p.y-=p.v;if(p.y<-10)p.y=h+10;ctx.beginPath();ctx.fillStyle=`rgba(${p.c},${p.a})`;ctx.shadowBlur=12*devicePixelRatio;ctx.shadowColor=`rgba(${p.c},.55)`;ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()}requestAnimationFrame(draw)}
-addEventListener('resize',resize);resize();draw();
+function openShop() { document.getElementById("shopOverlay").style.display = "flex"; }
+function closeShop() { document.getElementById("shopOverlay").style.display = "none"; }
+
+
+function openCommunity() {
+
+    window.open(
+        "https://discord.gg/YOURINVITE",
+        "_blank"
+    );
+
+}
+
+
+
+/* =====================================================
+   100 DISCORD QUESTIONS
+===================================================== */
+
+const discordQuestions = [
+
+/* 1 */
+
+{
+q:"چطور اکانت Discord بسازم؟",
+a:"برای ساخت اکانت Discord وارد صفحه ثبت‌نام Discord شو، ایمیل، نام کاربری و رمز عبور انتخاب کن و مراحل تأیید را انجام بده."
+},
+
+/* 2 */
+
+{
+q:"چطور وارد Discord شوم؟",
+a:"Discord را باز کن و گزینه Login را بزن، سپس ایمیل یا شماره تلفن و رمز عبورت را وارد کن."
+},
+
+/* 3 */
+
+{
+q:"چطور رمز Discord را عوض کنم؟",
+a:"به User Settings برو، وارد بخش Account شو و گزینه تغییر رمز عبور را انتخاب کن."
+},
+
+/* 4 */
+
+{
+q:"اگر رمز Discord را فراموش کنم چه کنم؟",
+a:"در صفحه Login روی Forgot your password? بزن و ایمیل متصل به اکانت را وارد کن."
+},
+
+/* 5 */
+
+{
+q:"چطور ایمیل Discord را تغییر بدهم؟",
+a:"از User Settings وارد Account شو و از بخش Email، ایمیل جدید را تنظیم و تأیید کن."
+},
+
+/* 6 */
+
+{
+q:"چطور شماره تلفن Discord را اضافه کنم؟",
+a:"از تنظیمات Account می‌توانی شماره تلفن خودت را اضافه و سپس آن را تأیید کنی."
+},
+
+/* 7 */
+
+{
+q:"چطور از Discord خارج شوم؟",
+a:"از User Settings پایین صفحه گزینه Log Out را انتخاب کن."
+},
+
+/* 8 */
+
+{
+q:"چطور اکانت Discord را حذف کنم؟",
+a:"از User Settings وارد Account شو و گزینه Delete Account را انتخاب کن و مراحل تأیید را انجام بده."
+},
+
+/* 9 */
+
+{
+q:"چطور اکانت Discord را غیرفعال کنم؟",
+a:"در Account Settings گزینه Disable Account را انتخاب کن."
+},
+
+/* 10 */
+
+{
+q:"Discord روی کامپیوتر نصب نمی‌شود، چه کنم؟",
+a:"اتصال اینترنت، فضای خالی و نسخه سیستم‌عامل را بررسی کن و سپس آخرین نسخه Discord را نصب کن."
+},
+
+/* 11 */
+
+{
+q:"چطور یک Server بسازم؟",
+a:"در Discord روی علامت + در بخش سرورها کلیک کن و گزینه Create My Own را انتخاب کن."
+},
+
+/* 12 */
+
+{
+q:"چطور اسم Server را عوض کنم؟",
+a:"وارد Server Settings شو و از بخش Overview نام سرور را تغییر بده."
+},
+
+/* 13 */
+
+{
+q:"چطور عکس Server را عوض کنم؟",
+a:"در Server Settings بخش Overview می‌توانی آیکون سرور را تغییر بدهی."
+},
+
+/* 14 */
+
+{
+q:"چطور Invite Link بسازم؟",
+a:"روی نام سرور کلیک کن، Invite People را انتخاب کن و لینک دعوت را کپی کن."
+},
+
+/* 15 */
+
+{
+q:"چطور Invite Link را دائمی کنم؟",
+a:"هنگام ساخت لینک دعوت، تنظیمات Expire و Max Uses را طوری تنظیم کن که محدودیت نداشته باشد، اگر Discord برای آن سرور اجازه بدهد."
+},
+
+/* 16 */
+
+{
+q:"چطور کسی را به Server دعوت کنم؟",
+a:"لینک Invite سرور را برای او بفرست."
+},
+
+/* 17 */
+
+{
+q:"چطور کسی را Kick کنم؟",
+a:"روی نام کاربر کلیک راست کن و گزینه Kick را انتخاب کن، اگر Permission لازم را داشته باشی."
+},
+
+/* 18 */
+
+{
+q:"چطور کسی را Ban کنم؟",
+a:"روی کاربر کلیک راست کن و گزینه Ban را انتخاب کن، در صورتی که Permission لازم را داشته باشی."
+},
+
+/* 19 */
+
+{
+q:"چطور کسی را Unban کنم؟",
+a:"به Server Settings و بخش Bans برو، کاربر موردنظر را پیدا کن و Unban را بزن."
+},
+
+/* 20 */
+
+{
+q:"چطور Server را Delete کنم؟",
+a:"مالک سرور می‌تواند از Server Settings گزینه Delete Server را انتخاب کند."
+},
+
+/* 21 */
+
+{
+q:"Role چیست؟",
+a:"Role در Discord برای مدیریت دسترسی‌ها و مشخص کردن جایگاه اعضای سرور استفاده می‌شود."
+},
+
+/* 22 */
+
+{
+q:"چطور Role بسازم؟",
+a:"به Server Settings و سپس Roles برو و گزینه Create Role را انتخاب کن."
+},
+
+/* 23 */
+
+{
+q:"چطور Role را به کاربر بدهم؟",
+a:"روی نام کاربر کلیک کن و Role موردنظر را انتخاب کن، اگر Permission لازم را داشته باشی."
+},
+
+/* 24 */
+
+{
+q:"چطور Role را حذف کنم؟",
+a:"از Server Settings وارد Roles شو و Role موردنظر را حذف کن."
+},
+
+/* 25 */
+
+{
+q:"Permission چیست؟",
+a:"Permission مشخص می‌کند یک کاربر یا Role چه کارهایی می‌تواند در سرور انجام دهد."
+},
+
+/* 26 */
+
+{
+q:"چطور اجازه مدیریت پیام‌ها را بدهم؟",
+a:"در تنظیمات Role، Permission مربوط به Manage Messages را فعال کن."
+},
+
+/* 27 */
+
+{
+q:"Administrator چیست؟",
+a:"Administrator یک Permission بسیار قدرتمند است که دسترسی‌های مدیریتی زیادی به Role می‌دهد."
+},
+
+/* 28 */
+
+{
+q:"چطور رنگ Role را تغییر بدهم؟",
+a:"در Server Settings و بخش Roles، Role را انتخاب کن و رنگ آن را تغییر بده."
+},
+
+/* 29 */
+
+{
+q:"چطور Role را بالاتر ببرم؟",
+a:"در بخش Roles می‌توانی جای Role را تغییر بدهی؛ البته محدودیت‌های مربوط به Hierarchy را باید رعایت کنی."
+},
+
+/* 30 */
+
+{
+q:"چرا نمی‌توانم Role یک نفر را تغییر بدهم؟",
+a:"احتمالاً Role تو از Role آن کاربر پایین‌تر است یا Permission لازم را نداری."
+},
+
+/* 31 */
+
+{
+q:"Channel چیست؟",
+a:"Channel محلی برای ارتباط اعضای یک Discord Server است و می‌تواند متنی یا صوتی باشد."
+},
+
+/* 32 */
+
+{
+q:"چطور Text Channel بسازم؟",
+a:"کنار دسته‌بندی موردنظر روی + کلیک کن و Text Channel را انتخاب کن."
+},
+
+/* 33 */
+
+{
+q:"چطور Voice Channel بسازم؟",
+a:"کنار دسته‌بندی روی + کلیک کن و Voice Channel را انتخاب کن."
+},
+
+/* 34 */
+
+{
+q:"چطور Channel را حذف کنم؟",
+a:"از تنظیمات Channel گزینه Delete Channel را انتخاب کن."
+},
+
+/* 35 */
+
+{
+q:"چطور Channel را Private کنم؟",
+a:"در Channel Settings بخش Permissions دسترسی @everyone را محدود کن و دسترسی Roleهای موردنظر را تنظیم کن."
+},
+
+/* 36 */
+
+{
+q:"چطور اسم Channel را تغییر بدهم؟",
+a:"Channel را باز کن، وارد Edit Channel شو و نام آن را تغییر بده."
+},
+
+/* 37 */
+
+{
+q:"چطور Channel را جابه‌جا کنم؟",
+a:"در لیست Channelها آن را بکش و در محل موردنظر قرار بده، اگر Permission لازم را داشته باشی."
+},
+
+/* 38 */
+
+{
+q:"Category چیست؟",
+a:"Category برای دسته‌بندی و مرتب کردن Channelهای یک سرور استفاده می‌شود."
+},
+
+/* 39 */
+
+{
+q:"چطور Category بسازم؟",
+a:"روی نام سرور کلیک کن و Create Category را انتخاب کن."
+},
+
+/* 40 */
+
+{
+q:"چطور Channel را داخل Category بگذارم؟",
+a:"Channel را بکش و داخل Category موردنظر قرار بده."
+},
+
+/* 41 */
+
+{
+q:"چرا میکروفون Discord کار نمی‌کند؟",
+a:"در User Settings بخش Voice & Video ورودی میکروفون را بررسی کن و مطمئن شو Discord اجازه دسترسی به Microphone را دارد."
+},
+
+/* 42 */
+
+{
+q:"چطور میکروفونم را انتخاب کنم؟",
+a:"به User Settings و Voice & Video برو و از Input Device میکروفون موردنظر را انتخاب کن."
+},
+
+/* 43 */
+
+{
+q:"چطور صدای Discord را زیاد کنم؟",
+a:"از تنظیمات صدا یا Volume Mixer سیستم و همچنین تنظیمات Voice & Video میزان صدا را بررسی کن."
+},
+
+/* 44 */
+
+{
+q:"چرا صدای دوست من نمی‌آید؟",
+a:"بررسی کن صدای Discord قطع نباشد، کاربر Mute نباشد و Output Device درست انتخاب شده باشد."
+},
+
+/* 45 */
+
+{
+q:"چطور کسی را در Voice Mute کنم؟",
+a:"روی کاربر کلیک راست کن و گزینه Server Mute یا Mute را انتخاب کن، اگر Permission لازم را داشته باشی."
+},
+
+/* 46 */
+
+{
+q:"چطور Deafen کنم؟",
+a:"روی گزینه Deafen در بخش Voice Controls کلیک کن."
+},
+
+/* 47 */
+
+{
+q:"چرا Discord صدای بازی را منتقل نمی‌کند؟",
+a:"Input Device و تنظیمات Voice Activity را بررسی کن و مطمئن شو Discord به دستگاه صوتی درست دسترسی دارد."
+},
+
+/* 48 */
+
+{
+q:"Push to Talk چیست؟",
+a:"Push to Talk حالتی است که فقط هنگام نگه داشتن یک کلید، صدای میکروفون منتقل می‌شود."
+},
+
+/* 49 */
+
+{
+q:"چطور Push to Talk فعال کنم؟",
+a:"در User Settings و Voice & Video حالت Input Mode را روی Push to Talk قرار بده."
+},
+
+/* 50 */
+
+{
+q:"چطور کلید Push to Talk را تغییر بدهم؟",
+a:"در User Settings بخش Keybinds می‌توانی کلید Push to Talk را تغییر بدهی."
+},
+
+/* 51 */
+
+{
+q:"Discord Nitro چیست؟",
+a:"Nitro یک اشتراک پولی Discord است که امکانات و قابلیت‌های اضافه‌ای در اختیار کاربر قرار می‌دهد."
+},
+
+/* 52 */
+
+{
+q:"Nitro چه امکاناتی دارد؟",
+a:"بسته به نوع اشتراک، امکاناتی مثل قابلیت‌های بیشتر برای Emoji، آپلود فایل و امکانات شخصی‌سازی ارائه می‌شود."
+},
+
+/* 53 */
+
+{
+q:"چطور Nitro بخرم؟",
+a:"از بخش Nitro در Discord می‌توانی گزینه‌های اشتراک را مشاهده و در صورت داشتن روش پرداخت مناسب خرید را انجام بدهی."
+},
+
+/* 54 */
+
+{
+q:"چطور Nitro را لغو کنم؟",
+a:"از User Settings و بخش Subscriptions می‌توانی اشتراک خود را مدیریت یا لغو کنی."
+},
+
+/* 55 */
+
+{
+q:"Nitro Gift چیست؟",
+a:"Nitro Gift هدیه‌ای است که یک کاربر می‌تواند برای فعال‌سازی Nitro به کاربر دیگر ارسال کند."
+},
+
+/* 56 */
+
+{
+q:"چطور Nitro Gift را فعال کنم؟",
+a:"اگر Gift معتبر دریافت کرده‌ای، آن را از طریق Discord Redeem کن و مراحل نمایش داده‌شده را انجام بده."
+},
+
+/* 57 */
+
+{
+q:"آیا Nitro رایگان است؟",
+a:"Nitro معمولاً یک سرویس پولی است؛ مراقب سایت‌هایی باش که وعده Nitro رایگان می‌دهند و اطلاعات ورود می‌خواهند."
+},
+
+/* 58 */
+
+{
+q:"چطور بفهمم Nitro واقعی است؟",
+a:"Gift یا پیشنهاد را فقط از منابع معتبر Discord بررسی کن و رمز عبورت را در سایت‌های ناشناس وارد نکن."
+},
+
+/* 59 */
+
+{
+q:"Discord Boost چیست؟",
+a:"Server Boost قابلیتی است که اعضا می‌توانند برای حمایت از یک سرور استفاده کنند و با افزایش Boostها امکاناتی برای سرور فعال می‌شود."
+},
+
+/* 60 */
+
+{
+q:"چطور Server را Boost کنم؟",
+a:"از صفحه سرور یا بخش Nitro می‌توانی گزینه Server Boost را پیدا کنی، اگر برای اکانتت در دسترس باشد."
+},
+
+/* 61 */
+
+{
+q:"Bot در Discord چیست؟",
+a:"Bot یک برنامه خودکار است که می‌تواند کارهای مختلفی مثل مدیریت، سرگرمی یا اجرای دستورات را در سرور انجام دهد."
+},
+
+/* 62 */
+
+{
+q:"چطور Bot به Server اضافه کنم؟",
+a:"از صفحه رسمی یا معتبر Bot، گزینه Invite یا Add to Discord را انتخاب کن و سرور موردنظر را انتخاب کن."
+},
+
+/* 63 */
+
+{
+q:"چطور Bot را حذف کنم؟",
+a:"اگر Permission لازم را داشته باشی، می‌توانی Bot را Kick یا Ban کنی."
+},
+
+/* 64 */
+
+{
+q:"چطور Bot بسازم؟",
+a:"برای ساخت Bot می‌توانی از Discord Developer Portal و یک زبان برنامه‌نویسی مثل JavaScript یا Python استفاده کنی."
+},
+
+/* 65 */
+
+{
+q:"Discord Developer Portal چیست؟",
+a:"Developer Portal محیط رسمی Discord برای ساخت و مدیریت Applicationها و Botهاست."
+},
+
+/* 66 */
+
+{
+q:"Bot Token چیست؟",
+a:"Bot Token یک کلید محرمانه برای دسترسی برنامه به Bot است و نباید آن را با دیگران به اشتراک بگذاری."
+},
+
+/* 67 */
+
+{
+q:"اگر Bot Token لو رفت چه کنم؟",
+a:"توکن را در Developer Portal بازسازی یا Reset کن و توکن قبلی را دیگر استفاده نکن."
+},
+
+/* 68 */
+
+{
+q:"چطور Bot را Online کنم؟",
+a:"باید برنامه Bot را روی کامپیوتر یا یک سرویس مناسب اجرا کنی و کد Bot را به Discord متصل کنی."
+},
+
+/* 69 */
+
+{
+q:"چرا Bot من Offline است؟",
+a:"بررسی کن برنامه Bot در حال اجرا باشد، Token درست باشد و اتصال اینترنت و کد Bot مشکلی نداشته باشد."
+},
+
+/* 70 */
+
+{
+q:"چطور برای Bot Command بسازم؟",
+a:"می‌توانی از Slash Commands و APIهای Discord برای ساخت دستورهای Bot استفاده کنی."
+},
+
+/* 71 */
+
+{
+q:"چطور امنیت Discord را بیشتر کنم؟",
+a:"رمز قوی استفاده کن، احراز هویت دومرحله‌ای را فعال کن و روی لینک‌های ناشناس کلیک نکن."
+},
+
+/* 72 */
+
+{
+q:"2FA در Discord چیست؟",
+a:"2FA یک لایه امنیتی اضافه است که هنگام ورود می‌تواند کد تأیید بیشتری از کاربر بخواهد."
+},
+
+/* 73 */
+
+{
+q:"چطور 2FA را فعال کنم؟",
+a:"در User Settings و بخش Account گزینه مربوط به Two-Factor Authentication را پیدا کن و مراحل را انجام بده."
+},
+
+/* 74 */
+
+{
+q:"Phishing در Discord چیست؟",
+a:"Phishing تلاش برای فریب کاربر جهت گرفتن اطلاعاتی مثل رمز عبور یا Token است."
+},
+
+/* 75 */
+
+{
+q:"چطور یک لینک مشکوک را تشخیص بدهم؟",
+a:"آدرس سایت را با دقت بررسی کن و اگر لینک ناشناس است، اطلاعات ورود یا اطلاعات شخصی خودت را وارد نکن."
+},
+
+/* 76 */
+
+{
+q:"اگر اکانتم هک شد چه کنم؟",
+a:"رمز عبور را تغییر بده، نشست‌های مشکوک را بررسی کن، 2FA را فعال کن و از مسیرهای رسمی Discord برای بازیابی کمک بگیر."
+},
+
+/* 77 */
+
+{
+q:"چطور کاربر مزاحم را Block کنم؟",
+a:"روی پروفایل کاربر کلیک راست کن و گزینه Block را انتخاب کن."
+},
+
+/* 78 */
+
+{
+q:"چطور کسی را Report کنم؟",
+a:"از امکانات گزارش‌دهی رسمی Discord برای گزارش رفتار یا محتوایی که قوانین Discord را نقض می‌کند استفاده کن."
+},
+
+/* 79 */
+
+{
+q:"چطور پیام‌های مزاحم را مدیریت کنم؟",
+a:"می‌توانی کاربر را Mute یا Block کنی و در سرور نیز از ابزارهای Moderation استفاده کنی."
+},
+
+/* 80 */
+
+{
+q:"چطور Privacy تنظیماتم را تغییر بدهم؟",
+a:"از User Settings وارد Privacy & Safety شو و گزینه‌های مربوط به پیام‌ها و درخواست‌های دوستی را تنظیم کن."
+},
+
+/* 81 */
+
+{
+q:"چطور Friend اضافه کنم؟",
+a:"به بخش Friends برو و گزینه Add Friend را انتخاب کن، سپس Username مربوط به دوستت را وارد کن."
+},
+
+/* 82 */
+
+{
+q:"چطور Friend را حذف کنم؟",
+a:"روی پروفایل دوستت کلیک راست کن و گزینه Remove Friend را انتخاب کن."
+},
+
+/* 83 */
+
+{
+q:"DM چیست؟",
+a:"DM یا Direct Message یک گفت‌وگوی خصوصی بین کاربران Discord است."
+},
+
+/* 84 */
+
+{
+q:"چطور DM را ببندم؟",
+a:"می‌توانی گفت‌وگوی DM را ببندی؛ این کار معمولاً پیام‌های قبلی را حذف نمی‌کند."
+},
+
+/* 85 */
+
+{
+q:"چطور پیام را Delete کنم؟",
+a:"روی پیام خودت کلیک راست کن و گزینه Delete Message را انتخاب کن."
+},
+
+/* 86 */
+
+{
+q:"چطور پیام را Edit کنم؟",
+a:"روی پیام خودت کلیک راست کن و گزینه Edit Message را انتخاب کن."
+},
+
+/* 87 */
+
+{
+q:"چطور Emoji اضافه کنم؟",
+a:"اگر Permission لازم را داشته باشی، از Server Settings و بخش Emoji می‌توانی Emoji اضافه کنی."
+},
+
+/* 88 */
+
+{
+q:"چطور Sticker اضافه کنم؟",
+a:"در سرورهای دارای قابلیت مربوطه، می‌توانی از تنظیمات Server بخش Stickerها را مدیریت کنی."
+},
+
+/* 89 */
+
+{
+q:"چطور یک Message را Pin کنم؟",
+a:"روی پیام کلیک راست کن و گزینه Pin Message را انتخاب کن، اگر Permission لازم را داشته باشی."
+},
+
+/* 90 */
+
+{
+q:"Thread در Discord چیست؟",
+a:"Thread یک گفت‌وگوی جداشده از یک پیام است که برای مرتب نگه داشتن بحث‌ها استفاده می‌شود."
+},
+
+/* 91 */
+
+{
+q:"چطور Discord را آپدیت کنم؟",
+a:"Discord معمولاً هنگام اجرا خودش را بررسی و به‌روزرسانی می‌کند. همچنین می‌توانی آخرین نسخه را از منابع رسمی Discord دریافت کنی."
+},
+
+/* 92 */
+
+{
+q:"چرا Discord کند شده؟",
+a:"اتصال اینترنت، مصرف RAM و CPU، برنامه‌های پس‌زمینه و تنظیمات Discord را بررسی کن."
+},
+
+/* 93 */
+
+{
+q:"چرا Discord باز نمی‌شود؟",
+a:"برنامه را کاملاً ببند و دوباره اجرا کن. اگر مشکل ادامه داشت، سیستم و نسخه Discord را بررسی و در صورت نیاز نصب مجدد کن."
+},
+
+/* 94 */
+
+{
+q:"چرا Discord قطع و وصل می‌شود؟",
+a:"اتصال اینترنت و وضعیت سرویس Discord را بررسی کن و در صورت مشکل شبکه، اتصال دیگری را امتحان کن."
+},
+
+/* 95 */
+
+{
+q:"چطور Cache Discord را پاک کنم؟",
+a:"روش پاک کردن Cache به سیستم‌عامل بستگی دارد؛ معمولاً باید Discord را ببندی و پوشه Cache مربوط به برنامه را پاک کنی."
+},
+
+/* 96 */
+
+{
+q:"Discord روی موبایل کار نمی‌کند، چه کنم؟",
+a:"برنامه را آپدیت کن، اینترنت را بررسی کن و در صورت ادامه مشکل Cache برنامه را پاک یا Discord را دوباره نصب کن."
+},
+
+/* 97 */
+
+{
+q:"چطور زبان Discord را تغییر بدهم؟",
+a:"از User Settings وارد Language شو و زبان موردنظر را انتخاب کن."
+},
+
+/* 98 */
+
+{
+q:"چطور Dark Mode فعال کنم؟",
+a:"از User Settings وارد Appearance شو و حالت Dark را انتخاب کن."
+},
+
+/* 99 */
+
+{
+q:"چطور Notificationهای Discord را خاموش کنم؟",
+a:"از User Settings و Notifications می‌توانی اعلان‌های Discord را مدیریت یا خاموش کنی."
+},
+
+/* 100 */
+
+{
+q:"چطور بفهمم Discord مشکل دارد؟",
+a:"اگر Discord برای بسیاری از کاربران مشکل دارد، وضعیت سرویس را از صفحه رسمی وضعیت Discord بررسی کن."
+}
+
+];
+
+
+
+/* =====================================================
+   CHAT FUNCTIONS
+===================================================== */
+
+function openChat() {
+
+    document.getElementById("chatAI").style.display = "flex";
+
+    document.getElementById("chatInput").focus();
+
+}
+
+
+function closeChat() {
+
+    document.getElementById("chatAI").style.display = "none";
+
+}
+
+
+/* =====================================================
+   CREATE 100 QUESTION BUTTONS
+===================================================== */
+
+const questionList =
+    document.getElementById("questionList");
+
+
+discordQuestions.forEach((item,index) => {
+
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "question-btn";
+
+    button.textContent =
+        `${index + 1}. ${item.q}`;
+
+
+    button.onclick = function() {
+
+        addMessage(item.q,"user");
+
+
+        setTimeout(function() {
+
+            addMessage(item.a,"bot");
+
+        },300);
+
+    };
+
+
+    questionList.appendChild(button);
+
+});
+
+
+
+/* =====================================================
+   ADD MESSAGE
+===================================================== */
+
+function addMessage(text,type) {
+
+    const messages =
+        document.getElementById("chatMessages");
+
+
+    const message =
+        document.createElement("div");
+
+
+    message.className =
+        "message " +
+        (type === "user"
+            ? "user-message"
+            : "bot-message");
+
+
+    message.textContent = text;
+
+
+    messages.appendChild(message);
+
+
+    messages.scrollTop =
+        messages.scrollHeight;
+
+}
+
+
+
+/* =====================================================
+   SEND MESSAGE
+===================================================== */
+
+function sendChat() {
+
+    const input =
+        document.getElementById("chatInput");
+
+
+    const text =
+        input.value.trim();
+
+
+    if (!text) return;
+
+
+    addMessage(text,"user");
+
+
+    input.value = "";
+
+
+    /*
+       EXACT QUESTION SEARCH
+    */
+
+    const exact =
+        discordQuestions.find(item =>
+            item.q.toLowerCase()
+            ===
+            text.toLowerCase()
+        );
+
+
+    if (exact) {
+
+        setTimeout(function() {
+
+            addMessage(
+                exact.a,
+                "bot"
+            );
+
+        },300);
+
+        return;
+    }
+
+
+
+    /*
+       KEYWORD SEARCH
+    */
+
+    const words =
+        text
+        .toLowerCase()
+        .split(/\s+/)
+        .filter(word => word.length > 2);
+
+   
+    let bestMatch = null;
+
+    let bestScore = 0;
+
+
+    discordQuestions.forEach(item => {
+
+        const question =
+            item.q.toLowerCase();
+
+
+        let score = 0;
+
+
+        words.forEach(word => {
+
+            if (question.includes(word)) {
+
+                score++;
+
+            }
+
+        });
+
+
+        if (score > bestScore) {
+
+            bestScore = score;
+
+            bestMatch = item;
+
+        }
+
+    });
+
+
+
+    setTimeout(function() {
+
+        if (bestMatch && bestScore > 0) {
+
+            addMessage(
+                bestMatch.a,
+                "bot"
+            );
+
+        }
+
+        else {
+
+            addMessage(
+
+`🤖 من فقط درباره Discord راهنمایی می‌کنم.
+
+مثلاً می‌تونی بپرسی:
+
+• چطور Role بسازم؟
+• چطور Bot اضافه کنم؟
+• چرا میکروفون Discord کار نمی‌کنه؟
+• چطور Server بسازم؟
+• چطور 2FA فعال کنم؟
+• Discord Nitro چیست؟`,
+
+                "bot"
+            );
+
+        }
+
+    },400);
+
+}
+
+
+
+/* =====================================================
+   ENTER KEY
+===================================================== */
+
+document
+.getElementById("chatInput")
+.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            sendChat();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   MENU BUTTONS
+===================================================== */
+
+function showGuide() {
+    document.getElementById("guideOverlay").style.display = "flex";
+}
+
+function closeGuide() {
+    document.getElementById("guideOverlay").style.display = "none";
+}
+
+
+function showAbout() {
+    document.getElementById("aboutOverlay").style.display = "flex";
+}
+
+function closeAbout() {
+    document.getElementById("aboutOverlay").style.display = "none";
+}
+
+
+function showSupport() {
+
+    alert(
+        "🎧 Support\n\n" +
+        "برای دریافت راهنمایی درباره Discord از Chat AI استفاده کن."
+    );
+
+}
+
 </script>
+
 </body>
 </html>
+```html
+<!-- SUPPORT TICKET -->
+<style>
+.support-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(0, 0, 0, .82);
+  backdrop-filter: blur(12px);
+  z-index: 10003;
+}
+
+.support-card {
+  width: min(760px, 95%);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 30px;
+  color: white;
+  background: linear-gradient(145deg, #101226, #080a18);
+  border: 1px solid rgba(88, 101, 242, .7);
+  border-radius: 26px;
+  box-shadow: 0 0 55px rgba(88, 101, 242, .35);
+  animation: supportOpen .3s ease;
+}
+
+@keyframes supportOpen {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.support-card h2 {
+  color: #fff;
+  margin-top: 0;
+}
+
+.support-card h2 i {
+  color: #5865F2;
+}
+
+.support-sub {
+  color: #aeb4d0;
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+
+.ticket-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.ticket-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.ticket-field.full {
+  grid-column: 1 / -1;
+}
+
+.ticket-field label {
+  color: #dfe3ff;
+  font-weight: bold;
+}
+
+.ticket-field input,
+.ticket-field select,
+.ticket-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  border: 1px solid #303451;
+  border-radius: 12px;
+  background: #15182e;
+  color: white;
+  font: inherit;
+  outline: none;
+}
+
+.ticket-field input:focus,
+.ticket-field select:focus,
+.ticket-field textarea:focus {
+  border-color: #5865F2;
+}
+
+.ticket-field select option {
+  background: #15182e;
+  color: white;
+}
+
+.ticket-field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.ticket-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.ticket-btn {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ticket-send {
+  background: #5865F2;
+  color: white;
+}
+
+.ticket-close {
+  background: #292c43;
+  color: white;
+}
+
+.ticket-note {
+  margin-top: 18px;
+  color: #aeb4d0;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+@media (max-width: 620px) {
+  .ticket-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-field.full {
+    grid-column: auto;
+  }
+
+  .support-card {
+    padding: 22px;
+  }
+}
+</style>
+
+<!-- TICKET CARD -->
+<div class="support-overlay" id="supportOverlay">
+  <div class="support-card">
+
+    <h2>
+      <i class="fas fa-headset"></i>
+      پشتیبانی / Support
+    </h2>
+
+    <p class="support-sub">
+      مشکلی داری؟ فرم زیر رو پر کن.
+      <br>
+      Have a question or issue? Fill out the form below.
+    </p>
+
+    <div class="ticket-grid">
+
+      <div class="ticket-field">
+        <label for="ticketName">نام / Name</label>
+        <input id="ticketName" type="text"
+               placeholder="نام شما">
+      </div>
+
+      <div class="ticket-field">
+        <label for="ticketContact">راه ارتباطی / Contact</label>
+        <input id="ticketContact" type="text"
+               placeholder="Discord ID یا ایمیل">
+      </div>
+
+      <div class="ticket-field full">
+        <label for="ticketSubject">موضوع / Subject</label>
+        <select id="ticketSubject">
+          <option value="">انتخاب موضوع</option>
+          <option>مشکل سایت / Website Issue</option>
+          <option>گزارش باگ / Bug Report</option>
+          <option>پیشنهاد / Suggestion</option>
+          <option>سایر / Other</option>
+        </select>
+      </div>
+
+      <div class="ticket-field full">
+        <label for="ticketMessage">توضیحات / Message</label>
+        <textarea id="ticketMessage"
+          placeholder="توضیحات درخواستت رو بنویس..."></textarea>
+      </div>
+
+    </div>
+
+    <div class="ticket-actions">
+      <button class="ticket-btn ticket-close"
+              onclick="closeSupport()">
+        بستن
+      </button>
+
+      <button class="ticket-btn ticket-send"
+              onclick="submitTicket()">
+        <i class="fas fa-paper-plane"></i>
+        ارسال تیکت
+      </button>
+    </div>
+
+    <div class="ticket-note">
+      💡 اطلاعات تماس درست وارد کن تا امکان پاسخ‌گویی داشته باشیم.
+    </div>
+
+  </div>
+</div>
+
+<script>
+function showSupport() {
+  document.getElementById("supportOverlay").style.display = "flex";
+}
+
+function closeSupport() {
+  document.getElementById("supportOverlay").style.display = "none";
+}
+
+function submitTicket() {
+  const name = document.getElementById("ticketName").value.trim();
+  const contact = document.getElementById("ticketContact").value.trim();
+  const subject = document.getElementById("ticketSubject").value;
+  const message = document.getElementById("ticketMessage").value.trim();
+
+  if (!name || !contact || !subject || !message) {
+    alert("لطفاً تمام بخش‌های تیکت را کامل کن.");
+    return;
+  }
+
+  alert(
+    "فرم تیکت تکمیل شد ✅\n\n" +
+    "نام: " + name + "\n" +
+    "موضوع: " + subject + "\n\n" +
+    "برای ارسال واقعی، باید سیستم پشتیبانی به سایت متصل شود."
+  );
+}
+</script>
+```
+
+**اتصال به منو:** دکمه Support سایتت باید این کد رو داشته باشه:
+
+```html
+<button onclick="showSupport()">
+  <i class="fas fa-headset"></i>
+  Support
+</button>
+```
+**توجه:** این نسخه فرم رو باز می‌کنه و اطلاعات خالی رو بررسی می‌کنه؛ هنوز تیکت واقعاً ارسال یا ذخیره نمی‌شه. برای دریافت واقعی تیکت‌ها باید یک سرویس پشتیبانی به سایت وصل بشه.
